@@ -1,8 +1,3 @@
-Here is the updated HTML code for your **Beeclaw** whitepaper page, incorporating all technical details from the latest document while maintaining the minimalist "Steinberger" blog style. This version includes full-width responsive containers, integrated AEO/SEO metadata, and specific citations for all research points.
-
-**File Path:** `beeclaw.saimadugula.com/index.html`
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,35 +63,35 @@ Here is the updated HTML code for your **Beeclaw** whitepaper page, incorporatin
 
         <h1>Whitepaper: Project Beeclaw - Autonomous Agentic Control Systems for Unmanned Aerial Vehicles</h1>
         <p size="2">
-            <i>By <a href="https://cv.saimadugula.com">Sai Srikanth Madugula</a>, PhD Research Scholar & Product Manager | [cite_start]February 17, 2026</i> [cite: 1]
+            <i>By <a href="https://cv.saimadugula.com">Sai Srikanth Madugula</a>, PhD Research Scholar & Product Manager | February 17, 2026</i>
         </p>
 
         <h3>1. Executive Summary and Architectural Vision</h3>
-        [cite_start]<p>The unmanned aerial vehicle (UAV) sector stands at a critical inflection point where deterministic automation lacks the cognitive flexibility to adapt to unstructured environments[cite: 3, 4]. [cite_start]Current flight controllers, often written in C/C++, rely on rigid state machines that fail in edge cases outside their programmed logic[cite: 5]. [cite_start]Simultaneously, the rise of agentic AI frameworks like **OpenClaw** offers autonomous reasoning and planning, yet bridging the gap between high-latency Large Language Models (LLMs) and hard real-time flight requirements remains an engineering challenge[cite: 5].</p>
+        <p>The unmanned aerial vehicle (UAV) sector stands at a critical inflection point where deterministic automation lacks the cognitive flexibility to adapt to unstructured environments. Current flight controllers, often written in C/C++, rely on rigid state machines that fail in edge cases outside their programmed logic. Simultaneously, the rise of agentic AI frameworks like **OpenClaw** offers autonomous reasoning and planning, yet bridging the gap between high-latency Large Language Models (LLMs) and hard real-time flight requirements remains an engineering challenge.</p>
         
-        [cite_start]<p>Project Beeclaw resolves this dichotomy by leveraging the memory safety of the **Rust** programming language for the "Bee" flight control stack and the "Claw" agentic framework running on edge silicon like the **Apple M4 Neural Engine**[cite: 6, 7]. [cite_start]This enables "Agentic Drones" capable of accepting natural language directives and dynamically generating flight code within a mathematically verifiable safety envelope[cite: 7].</p>
+        <p>Project Beeclaw resolves this dichotomy by leveraging the memory safety of the **Rust** programming language for the "Bee" flight control stack and the "Claw" agentic framework running on edge silicon like the **Apple M4 Neural Engine**. This enables "Agentic Drones" capable of accepting natural language directives and dynamically generating flight code within a mathematically verifiable safety envelope.</p>
 
         <h3>2. Brand Identity and Biomimetic Design</h3>
         <div class="biomimic-box">
-            [cite_start]"Bee" honors precise flight control and swarm intelligence, specifically emulating wing beat frequencies (200-250 Hz) to reduce noise pollution[cite: 14, 17]. [cite_start]"Claw" represents cognitive tool use via the integrated OpenClaw framework[cite: 19].
+            "Bee" honors precise flight control and swarm intelligence, specifically emulating wing beat frequencies (200-250 Hz) to reduce noise pollution. "Claw" represents cognitive tool use via the integrated OpenClaw framework.
         </div>
-        [cite_start]<p>The visual identity fuses the hexagonal geometry of a honeycomb (representing the Rust ecosystem) with mechanical articulation, using a palette of **Rust Orange** (#dea584) and **Carbon Fiber Black** (#1a1a1a)[cite: 21, 22].</p>
+        <p>The visual identity fuses the hexagonal geometry of a honeycomb (representing the Rust ecosystem) with mechanical articulation, using a palette of **Rust Orange** (#dea584) and **Carbon Fiber Black** (#1a1a1a).</p>
 
         <h3>3. Computation Substrate: Mac Mini M4 and Edge Silicon</h3>
-        [cite_start]<p>The architecture bifurcates into the **Flight Domain** (Hard Real-Time) and the **Agent Domain** (Cognitive)[cite: 24]. [cite_start]The Mac Mini M4 serves as the reference architecture for Ground Control Stations (GCS) and high-fidelity Software-In-The-Loop (SITL) simulation[cite: 26].</p>
+        <p>The architecture bifurcates into the **Flight Domain** (Hard Real-Time) and the **Agent Domain** (Cognitive). The Mac Mini M4 serves as the reference architecture for Ground Control Stations (GCS) and high-fidelity Software-In-The-Loop (SITL) simulation.</p>
         
         <table class="data">
             <tr><th>Feature</th><th>Mac Mini M4 Spec</th><th>Benefit for Beeclaw SITL</th></tr>
-            [cite_start]<tr><td>Neural Engine</td><td>38 TOPS (INT8)</td><td>Accelerates quantized SLM inference for OpenClaw agents[cite: 32].</td></tr>
-            [cite_start]<tr><td>Memory Bandwidth</td><td>Up to 273 GB/s</td><td>Enables high-fidelity streaming of LIDAR/Camera data[cite: 32].</td></tr>
-            [cite_start]<tr><td>UMA Advantage</td><td>Unified Memory</td><td>Allows CPU, GPU, and Neural Engine to access memory without copying data[cite: 30].</td></tr>
+            <tr><td>Neural Engine</td><td>38 TOPS (INT8)</td><td>Accelerates quantized SLM inference for OpenClaw agents.</td></tr>
+            <tr><td>Memory Bandwidth</td><td>Up to 273 GB/s</td><td>Enables high-fidelity streaming of LIDAR/Camera data.</td></tr>
+            <tr><td>UMA Advantage</td><td>Unified Memory</td><td>Allows CPU, GPU, and Neural Engine to access memory without copying data.</td></tr>
         </table>
 
         <h3>4. The "Bee": Rust-Based Flight Control Firmware</h3>
-        [cite_start]<p>The foundation of the system is the "Bee," a firmware layer responsible for sensor ingestion and state estimation[cite: 39, 40]. [cite_start]By replacing legacy C++ with Rust, the system eliminates entire classes of runtime errors like memory corruption and race conditions[cite: 41, 50].</p>
+        <p>The foundation of the system is the "Bee," a firmware layer responsible for sensor ingestion and state estimation. By replacing legacy C++ with Rust, the system eliminates entire classes of runtime errors like memory corruption and race conditions.</p>
         
         <h4>4.1 Asynchronous Control with Embassy</h4>
-        [cite_start]<p>Beeclaw utilizes the **Embassy** framework to bring async/await power to microcontrollers[cite: 51, 52]. [cite_start]Unlike traditional RTOS task management, Embassy allows code to run on a single stack through cooperative multitasking, yielding control at <code>.await</code> points to minimize power consumption via the <code>WFE</code> (Wait For Event) instruction[cite: 59, 62, 63].</p>
+        <p>Beeclaw utilizes the **Embassy** framework to bring async/await power to microcontrollers. Unlike traditional RTOS task management, Embassy allows code to run on a single stack through cooperative multitasking, yielding control at <code>.await</code> points to minimize power consumption via the <code>WFE</code> (Wait For Event) instruction.</p>
 
         <pre><code>#[embassy_executor::task]
 async fn flight_loop(mut imu: ImuDriver, mut motors: MotorDriver) {
@@ -106,39 +101,39 @@ async fn flight_loop(mut imu: ImuDriver, mut motors: MotorDriver) {
         let output = controller.calculate(state);
         motors.set_duty_cycle(output);
     }
-[cite_start]}</code> [cite: 66, 70]</pre>
+}</code></pre>
 
         <h3>5. The "Claw": Agentic Intelligence Framework</h3>
-        [cite_start]<p>The "Claw" provides conscious reasoning via a specialized fork of OpenClaw[cite: 85, 86]. [cite_start]It transforms the drone from a chatbot to a physical agent through an **Observation → Reasoning → Tool Selection → Execution** loop[cite: 89, 93].</p>
+        <p>The "Claw" provides conscious reasoning via a specialized fork of OpenClaw. It transforms the drone from a chatbot to a physical agent through an **Observation → Reasoning → Tool Selection → Execution** loop.</p>
         
         <ul>
-            [cite_start]<li><b>Edge Autonomy:</b> Runs Small Language Models (SLMs) like Phi-3 or Gemma 2B directly on the companion computer to eliminate cloud latency[cite: 105, 106].</li>
-            [cite_start]<li><b>Int4 Quantization:</b> Reduces memory footprint by 3-4x while maintaining reasoning performance[cite: 109, 110].</li>
-            [cite_start]<li><b>Agentic Coding:</b> The agent can generate Python or Rust scripts on the fly to handle novel mission requirements, strictly sandboxed from the flight loop[cite: 114, 115].</li>
+            <li><b>Edge Autonomy:</b> Runs Small Language Models (SLMs) like Phi-3 or Gemma 2B directly on the companion computer to eliminate cloud latency.</li>
+            <li><b>Int4 Quantization:</b> Reduces memory footprint by 3-4x while maintaining reasoning performance.</li>
+            <li><b>Agentic Coding:</b> The agent can generate Python or Rust scripts on the fly to handle novel mission requirements, strictly sandboxed from the flight loop.</li>
         </ul>
 
         <h3>6. Communications: The Neural Link</h3>
-        [cite_start]<p>The internal "Neural Link" bus utilizes **rkyv** for zero-copy serialization, allowing "deserialization" to become a constant-time pointer cast operation[cite: 119, 123, 126].</p>
+        <p>The internal "Neural Link" bus utilizes **rkyv** for zero-copy serialization, allowing "deserialization" to become a constant-time pointer cast operation.</p>
 
         <table class="data">
             <tr><th>Protocol</th><th>Usage</th><th>Serialization Cost</th><th>Efficiency</th></tr>
-            [cite_start]<tr><td><code>rkyv</code></td><td>Internal (Bee ↔ Claw)</td><td>Zero (Zero-copy) [cite: 136]</td><td>High</td></tr>
-            [cite_start]<tr><td><code>Postcard</code></td><td>Long-Range Telemetry</td><td>Low [cite: 136]</td><td>Very High (Compressed)</td></tr>
-            [cite_start]<tr><td><code>MAVLink 2</code></td><td>GCS Compatibility</td><td>Moderate [cite: 136]</td><td>Moderate</td></tr>
+            <tr><td><code>rkyv</code></td><td>Internal (Bee ↔ Claw)</td><td>Zero (Zero-copy)</td><td>High</td></tr>
+            <tr><td><code>Postcard</code></td><td>Long-Range Telemetry</td><td>Low</td><td>Very High (Compressed)</td></tr>
+            <tr><td><code>MAVLink 2</code></td><td>GCS Compatibility</td><td>Moderate</td><td>Moderate</td></tr>
         </table>
 
         <h3>7. Security and Failsafes</h3>
-        [cite_start]<p>To mitigate risks like prompt injection or compromised agent "skills," Beeclaw implements a **Reference Monitor** strategy[cite: 154, 159, 160]. [cite_start]The "Bee" firmware treats the "Claw" agent as an untrusted operator, enforcing a **Hard Geofence** and **Kinematic Envelope**[cite: 160, 161]. [cite_start]Any command violating these constraints triggers a failsafe hover mode[cite: 162].</p>
+        <p>To mitigate risks like prompt injection or compromised agent "skills," Beeclaw implements a **Reference Monitor** strategy. The "Bee" firmware treats the "Claw" agent as an untrusted operator, enforcing a **Hard Geofence** and **Kinematic Envelope**. Any command violating these constraints triggers a failsafe hover mode.</p>
 
         <h3>8. Future Outlook</h3>
-        [cite_start]<p>The roadmap includes **Swarm Agency**, utilizing the **Zenoh** pub/sub protocol to allow multiple Beeclaw units to share a distributed context for cooperative mapping[cite: 171, 172]. [cite_start]Beeclaw is a platform for the secure, autonomous interaction of software with the physical world[cite: 173].</p>
+        <p>The roadmap includes **Swarm Agency**, utilizing the **Zenoh** pub/sub protocol to allow multiple Beeclaw units to share a distributed context for cooperative mapping. Beeclaw is a platform for the secure, autonomous interaction of software with the physical world.</p>
 
         <h3>9. Technical Addendum: Detailed Specifications</h3>
         <ul>
-            [cite_start]<li><b>Flight MCU:</b> STM32H743ZI (480MHz, 2MB Flash, 1MB RAM)[cite: 176].</li>
-            [cite_start]<li><b>Inner Loop:</b> 1 kHz rate control running on the "Bee"[cite: 186].</li>
-            [cite_start]<li><b>Agent Loop:</b> 1-5 Hz reasoning loop running on the "Claw"[cite: 188].</li>
-            [cite_start]<li><b>Comms:</b> Interconnect via 1000Base-T Ethernet and High-speed SPI[cite: 180].</li>
+            <li><b>Flight MCU:</b> STM32H743ZI (480MHz, 2MB Flash, 1MB RAM).</li>
+            <li><b>Inner Loop:</b> 1 kHz rate control running on the "Bee".</li>
+            <li><b>Agent Loop:</b> 1-5 Hz reasoning loop running on the "Claw".</li>
+            <li><b>Comms:</b> Interconnect via 1000Base-T Ethernet and High-speed SPI.</li>
         </ul>
 
         <br>
@@ -151,5 +146,3 @@ async fn flight_loop(mut imu: ImuDriver, mut motors: MotorDriver) {
     </div>
 </body>
 </html>
-
-```
