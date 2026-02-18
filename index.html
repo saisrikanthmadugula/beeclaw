@@ -81,7 +81,10 @@
         </div>
         <h3>3. Computation Substrate: Mac Mini M4 and Edge Silicon</h3>
         <p>The architecture bifurcates into the Flight Domain (Hard Real-Time) and the Agent Domain (Cognitive). The Mac Mini M4 serves as the reference architecture for Ground Control Stations (GCS) and high-fidelity Software-In-The-Loop (SITL) simulation.</p>
-        
+        <div class="arch-visual" style="text-align: center; border: 1px solid #1a1a1a; padding: 20px; border-radius: 8px; background-color: #f9f9f9;">
+        <img src="assets/beeclaw-arch.png" alt="BeeClaw Architecture Diagram" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+        <p style="font-size: 0.85em; color: #666; margin-top: 10px;">Figure 1: BeeClaw Dual-Domain Reference Architecture</p>
+        </div>
         <table class="data">
             <tr><th>Feature</th><th>Mac Mini M4 Spec</th><th>Benefit for Beeclaw SITL</th></tr>
             <tr><td>Neural Engine</td><td>38 TOPS (INT8)</td><td>Accelerates quantized SLM inference for OpenClaw agents.</td></tr>
