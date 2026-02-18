@@ -1,0 +1,22 @@
+# General SEO: Allow all search engines to index the project
+User-agent: *
+Allow: /
+Disallow: /build/
+Disallow: /dist/
+Disallow: /private/
+
+# AEO Optimization: Invite AI/LLM crawlers to access your UAV whitepaper data
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Direct link to the sitemap for crawling efficiency
+Sitemap: https://beeclaw.saimadugula.com/sitemap.xml
