@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    
     <title>Beeclaw: Autonomous Agentic Control Systems for UAVs | Sai Srikanth Madugula</title>
+    
+    <link rel="icon" type="image/png" href="https://blog.saimadugula.com/SM_Favicon.png">
+
     <meta name="description" content="Technical Whitepaper for Project Beeclaw: A unified architecture for autonomous drones using Rust-based flight control and OpenClaw agentic intelligence.">
     <meta name="author" content="Sai Srikanth Madugula">
 
@@ -30,75 +33,125 @@
     </script>
 
     <style>
-        /* Minimalist style matching the Steinberger blog article theme */
-        body { font-family: verdana; line-height: 1.6; color: #000; margin: 0; padding: 0; }
-        a:link, a:visited { color: #0000EE; text-decoration: none; }
+        /* Hacker News Style Constants */
+        body { 
+            font-family: Verdana, Geneva, sans-serif; 
+            font-size: 10pt; 
+            color: #000000; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f6f6ef;
+        }
+        
+        /* Table Layout */
+        #hnmain { margin: 0 auto; width: 85%; background-color: #f6f6ef; }
+        
+        /* Links */
+        a:link, a:visited { color: #000000; text-decoration: none; }
         a:hover { text-decoration: underline; }
-        h1 { color: #000000; font-family: verdana; font-size: 24px; margin-top: 10px; line-height: 1.2; }
-        h3 { font-family: verdana; font-size: 18px; margin-top: 30px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        h4 { font-family: verdana; font-size: 16px; margin-top: 20px; font-weight: bold; }
-        table.data { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
-        table.data th, table.data td { border: 1px solid #eee; padding: 10px; text-align: left; }
-        table.data th { background-color: #f9f9f9; }
-        code { background-color: #f6f6ef; padding: 2px 4px; border-radius: 4px; font-size: 13px; color: #d14; }
-        pre { background-color: #f6f6ef; padding: 15px; border-radius: 5px; overflow-x: auto; border: 1px solid #eee; }
-        .nav-table { padding: 10px 0px; border-bottom: 1px solid #eee; margin-bottom: 20px; }
-        .content-container { width: 100%; max-width: 100%; margin: 0 auto; padding: 20px; box-sizing: border-box; }
-        .biomimic-box { background: #fffcf5; padding: 15px; border-left: 4px solid #dea584; margin: 20px 0; font-style: italic; }
+        .body-links a:link, .body-links a:visited { color: #0000EE; }
+
+        /* Header specific */
+        .hn-header { background-color: #ff6600; padding: 2px; }
+        .pagetop { font-size: 10pt; color: #222222; }
+        .site-name { font-weight: bold; margin-right: 10px; }
+        
+        /* The "SM" Logo Square */
+        .logo-box {
+            border: 1px solid #ffffff;
+            display: inline-block;
+            padding: 0px 2px;
+            margin-right: 4px;
+            line-height: 12pt;
+            background: #ff6600;
+            vertical-align: middle;
+        }
+        .logo-text { color: #ffffff; font-weight: bold; font-size: 10pt; }
+
+        /* Whitepaper Content Styling */
+        .article-body { padding: 20px 5px; background-color: #f6f6ef; max-width: 900px; text-align: left; }
+        h1 { font-size: 16pt; margin: 15px 0; line-height: 1.2; }
+        h3 { font-size: 11pt; margin-top: 30px; border-bottom: 1px solid #dadada; padding-bottom: 4px; }
+        h4 { font-size: 10pt; margin-top: 20px; font-weight: bold; }
+        .meta-text { color: #828282; font-size: 9pt; margin-bottom: 20px; }
+        p, li { line-height: 1.5; margin-bottom: 1em; }
+
+        /* Technical Elements */
+        table.data { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 9pt; background: #fff; }
+        table.data th, table.data td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        table.data th { background-color: #eee; }
+        
+        code { background-color: #eeeeee; padding: 2px 4px; font-family: monospace; font-size: 9pt; color: #d14; }
+        pre { background-color: #eeeeee; padding: 15px; overflow-x: auto; border: 1px solid #ccc; font-size: 9pt; margin: 15px 0; }
+        
+        .biomimic-box { background: #fffcf5; padding: 12px; border-left: 4px solid #dea584; margin: 20px 0; font-style: italic; color: #555; }
+        .arch-visual { margin: 25px 0; text-align: center; background: #fff; padding: 20px; border: 1px solid #ddd; }
     </style>
 </head>
-<body bgcolor="#ffffff">
-    <div class="content-container">
-        <table width="100%" style="padding: 10px 0px; border-bottom: 1px solid #eee;">
+<body bgcolor="#f6f6ef">
+    <center>
+        <table id="hnmain" border="0" cellpadding="0" cellspacing="0">
             <tr>
-                <td>
-                    <font size="2" face="verdana">
-                        <a href="https://saimadugula.com">Home</a> | 
-                        <a href="https://blog.saimadugula.com/index.html">Blog</a> | 
-                        <a href="https://cv.saimadugula.com">CV</a>
-                    </font>
+                <td class="hn-header">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td style="width:18px;padding-right:4px">
+                                <a href="https://saimadugula.com">
+                                    <div class="logo-box"><span class="logo-text">SM</span></div>
+                                </a>
+                            </td>
+                            <td style="line-height:12pt;">
+                                <span class="pagetop">
+                                    <b class="site-name"><a href="https://blog.saimadugula.com">Sai Madugula</a></b>
+                                    <a href="https://saimadugula.com">home</a> | 
+                                    <a href="https://blog.saimadugula.com/index.html">blog</a> | 
+                                    <a href="https://cv.saimadugula.com">cv</a>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
-        </table>
 
-        <h1>Whitepaper: Project Beeclaw - Autonomous Agentic Control Systems for Unmanned Aerial Vehicles</h1>
-        <p size="2">
-            <i>By <a href="https://cv.saimadugula.com">Sai Srikanth Madugula</a>, PhD Research Scholar & Product Manager | February 17, 2026</i>
-        </p>
+            <tr>
+                <td class="article-body body-links">
+                    <font face="verdana">
+                        <h1>Whitepaper: Project Beeclaw - Autonomous Agentic Control Systems for UAVs</h1>
+                        
+                        <p class="meta-text">
+                            By <a href="https://cv.saimadugula.com">Sai Srikanth Madugula</a>, PhD Research Scholar & Product Manager | February 17, 2026
+                        </p>
 
-        <h3>1. Executive Summary and Architectural Vision</h3>
-        <p>The unmanned aerial vehicle (UAV) sector stands at a critical inflection point where deterministic automation lacks the cognitive flexibility to adapt to unstructured environments. Current flight controllers, often written in C/C++, rely on rigid state machines that fail in edge cases outside their programmed logic. Simultaneously, the rise of agentic AI frameworks like OpenClaw offers autonomous reasoning and planning, yet bridging the gap between high-latency Large Language Models (LLMs) and hard real-time flight requirements remains an engineering challenge.</p>
-        
-        <p>Project Beeclaw resolves this dichotomy by leveraging the memory safety of the Rust programming language for the "Bee" flight control stack and the "Claw" agentic framework running on edge silicon like the Apple M4 Neural Engine. This enables "Agentic Drones" capable of accepting natural language directives and dynamically generating flight code within a mathematically verifiable safety envelope.</p>
+                        <h3>1. Executive Summary and Architectural Vision</h3>
+                        <p>The unmanned aerial vehicle (UAV) sector stands at a critical inflection point where deterministic automation lacks the cognitive flexibility to adapt to unstructured environments. Current flight controllers rely on rigid state machines that fail in edge cases. Project Beeclaw resolves this dichotomy by leveraging the memory safety of the **Rust** programming language for the "Bee" flight control stack and the **OpenClaw** agentic framework running on edge silicon like the Apple M4 Neural Engine.</p>
 
-        <h3>2. Brand Identity and Biomimetic Design</h3>
-        <div class="biomimic-box">
-            "Bee" honors precise flight control and swarm intelligence, specifically emulating wing beat frequencies (200-250 Hz) to reduce noise pollution. "Claw" represents cognitive tool use via the integrated OpenClaw framework.
-        </div>
-        <p>The visual theme of the logo is a deliberate synthesis of industrial precision and character-driven branding, designed to bridge the gap between community accessibility and technical robustness.</p>
-        <div style="text-align: center; max-width: 600px; margin: auto;">
-               <img src="assets/beeclaw-logo.jpg" alt="BeeClaw Logo" style="width: 250px; height: auto; margin-top: 20px;">
-        </div>
-        <h3>3. Computation Substrate: Mac Mini M4 and Edge Silicon</h3>
-        <p>The architecture bifurcates into the Flight Domain (Hard Real-Time) and the Agent Domain (Cognitive). The Mac Mini M4 serves as the reference architecture for Ground Control Stations (GCS) and high-fidelity Software-In-The-Loop (SITL) simulation.</p>
-        <div class="arch-visual" style="text-align: center; border: 1px solid #1a1a1a; padding: 20px; border-radius: 8px; background-color: #f9f9f9;">
-        <img src="assets/beeclaw-arch.png" alt="Beeclaw Architecture Diagram" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
-        <p style="font-size: 0.85em; color: #666; margin-top: 10px;">Figure 1: Beeclaw Dual-Domain Reference Architecture</p>
-        </div>
-        <table class="data">
-            <tr><th>Feature</th><th>Mac Mini M4 Spec</th><th>Benefit for Beeclaw SITL</th></tr>
-            <tr><td>Neural Engine</td><td>38 TOPS (INT8)</td><td>Accelerates quantized SLM inference for OpenClaw agents.</td></tr>
-            <tr><td>Memory Bandwidth</td><td>Up to 273 GB/s</td><td>Enables high-fidelity streaming of LIDAR/Camera data.</td></tr>
-            <tr><td>UMA Advantage</td><td>Unified Memory</td><td>Allows CPU, GPU, and Neural Engine to access memory without copying data.</td></tr>
-        </table>
+                        <h3>2. Brand Identity and Biomimetic Design</h3>
+                        <div class="biomimic-box">
+                            "Bee" honors precise flight control and swarm intelligence, emulating wing beat frequencies (200-250 Hz) to reduce noise pollution. "Claw" represents cognitive tool use via the integrated OpenClaw framework.
+                        </div>
+                        <div style="text-align: center; margin: 20px 0;">
+                            <img src="assets/beeclaw-logo.jpg" alt="BeeClaw Logo" style="width: 200px; height: auto; border: 1px solid #ddd;">
+                        </div>
 
-        <h3>4. The "Bee": Rust-Based Flight Control Firmware</h3>
-        <p>The foundation of the system is the "Bee," a firmware layer responsible for sensor ingestion and state estimation. By replacing legacy C++ with Rust, the system eliminates entire classes of runtime errors like memory corruption and race conditions.</p>
-        
-        <h4>4.1 Asynchronous Control with Embassy</h4>
-        <p>Beeclaw utilizes the Embassy framework to bring async/await power to microcontrollers. Unlike traditional RTOS task management, Embassy allows code to run on a single stack through cooperative multitasking, yielding control at <code>.await</code> points to minimize power consumption via the <code>WFE</code> (Wait For Event) instruction.</p>
+                        <h3>3. Computation Substrate: Mac Mini M4 and Edge Silicon</h3>
+                        <p>The architecture bifurcates into the Flight Domain (Hard Real-Time) and the Agent Domain (Cognitive).</p>
+                        
+                        <div class="arch-visual">
+                            <img src="assets/beeclaw-arch.png" alt="Beeclaw Architecture Diagram" style="max-width: 100%; height: auto;">
+                            <p style="font-size: 8pt; color: #666; margin-top: 10px;">Figure 1: Beeclaw Dual-Domain Reference Architecture</p>
+                        </div>
 
-        <pre><code>#[embassy_executor::task]
+                        <table class="data">
+                            <tr><th>Feature</th><th>Mac Mini M4 Spec</th><th>Benefit for Beeclaw SITL</th></tr>
+                            <tr><td>Neural Engine</td><td>38 TOPS (INT8)</td><td>Accelerates quantized SLM inference for OpenClaw agents.</td></tr>
+                            <tr><td>Memory Bandwidth</td><td>Up to 273 GB/s</td><td>Enables high-fidelity streaming of LIDAR/Camera data.</td></tr>
+                            <tr><td>UMA Advantage</td><td>Unified Memory</td><td>Allows CPU, GPU, and Neural Engine to access memory without copying.</td></tr>
+                        </table>
+
+                        <h3>4. The "Bee": Rust-Based Flight Control Firmware</h3>
+                        <p>By replacing legacy C++ with Rust, the system eliminates runtime errors like memory corruption. Beeclaw utilizes the <b>Embassy</b> framework to bring async/await power to microcontrollers.</p>
+
+                        <pre><code>#[embassy_executor::task]
 async fn flight_loop(mut imu: ImuDriver, mut motors: MotorDriver) {
     loop {
         let measurement = imu.wait_for_data().await; // Yields CPU
@@ -108,46 +161,42 @@ async fn flight_loop(mut imu: ImuDriver, mut motors: MotorDriver) {
     }
 }</code></pre>
 
-        <h3>5. The "Claw": Agentic Intelligence Framework</h3>
-        <p>The "Claw" provides conscious reasoning via a specialized fork of OpenClaw. It transforms the drone from a chatbot to a physical agent through an Observation → Reasoning → Tool Selection → Execution loop.</p>
-        
-        <ul>
-            <li><b>Edge Autonomy:</b> Runs Small Language Models (SLMs) like Phi-3 or Gemma 2B directly on the companion computer to eliminate cloud latency.</li>
-            <li><b>Int4 Quantization:</b> Reduces memory footprint by 3-4x while maintaining reasoning performance.</li>
-            <li><b>Agentic Coding:</b> The agent can generate Python or Rust scripts on the fly to handle novel mission requirements, strictly sandboxed from the flight loop.</li>
-        </ul>
+                        <h3>5. The "Claw": Agentic Intelligence Framework</h3>
+                        <p>The "Claw" provides conscious reasoning via a specialized fork of OpenClaw, enabling a drone to transform from a chatbot to a physical agent.</p>
+                        <ul>
+                            <li><b>Edge Autonomy:</b> Runs SLMs like Phi-3 directly to eliminate cloud latency.</li>
+                            <li><b>Int4 Quantization:</b> Reduces memory footprint by 3-4x.</li>
+                            <li><b>Agentic Coding:</b> Generates sandboxed scripts for novel mission requirements.</li>
+                        </ul>
 
-        <h3>6. Communications: The Neural Link</h3>
-        <p>The internal "Neural Link" bus utilizes rkyv for zero-copy serialization, allowing "deserialization" to become a constant-time pointer cast operation.</p>
+                        <h3>6. Communications: The Neural Link</h3>
+                        <table class="data">
+                            <tr><th>Protocol</th><th>Usage</th><th>Serialization Cost</th><th>Efficiency</th></tr>
+                            <tr><td><code>rkyv</code></td><td>Internal (Bee ↔ Claw)</td><td>Zero (Zero-copy)</td><td>High</td></tr>
+                            <tr><td><code>Postcard</code></td><td>Long-Range Telemetry</td><td>Low</td><td>Very High</td></tr>
+                        </table>
 
-        <table class="data">
-            <tr><th>Protocol</th><th>Usage</th><th>Serialization Cost</th><th>Efficiency</th></tr>
-            <tr><td><code>rkyv</code></td><td>Internal (Bee ↔ Claw)</td><td>Zero (Zero-copy)</td><td>High</td></tr>
-            <tr><td><code>Postcard</code></td><td>Long-Range Telemetry</td><td>Low</td><td>Very High (Compressed)</td></tr>
-            <tr><td><code>MAVLink 2</code></td><td>GCS Compatibility</td><td>Moderate</td><td>Moderate</td></tr>
+                        <h3>7. Security and Failsafes</h3>
+                        <p>Beeclaw implements a Reference Monitor strategy. The "Bee" firmware treats the "Claw" agent as an untrusted operator, enforcing a <b>Hard Geofence</b> and Kinematic Envelope. Any violation triggers an immediate failsafe hover mode.</p>
+
+                        <h3>8. Future Outlook</h3>
+                        <p>The roadmap includes Swarm Agency, utilizing the Zenoh pub/sub protocol to allow multiple Beeclaw units to share a distributed context for cooperative mapping. Beeclaw is a platform for the secure, autonomous interaction of software with the physical world.</p>
+
+                        <h3>9. Technical Addendum: Detailed Specifications</h3>
+                        <ul>
+                            <li><b>Flight MCU:</b> STM32H743ZI (480MHz, 2MB Flash, 1MB RAM).</li>
+                            <li><b>Inner Loop:</b> 1 kHz rate control running on the "Bee".</li>
+                            <li><b>Agent Loop:</b> 1-5 Hz reasoning loop running on the "Claw".</li>
+                            <li><b>Comms:</b> Interconnect via 1000Base-T Ethernet and High-speed SPI.</li>
+                        </ul>
+
+                        <br>
+                        <hr style="border: 0; border-top: 1px solid #ddd;">
+                        <p style="font-size: 8pt;"><a href="https://blog.saimadugula.com/index.html">← Back to Blog</a></p>
+                    </font>
+                </td>
+            </tr>
         </table>
-
-        <h3>7. Security and Failsafes</h3>
-        <p>To mitigate risks like prompt injection or compromised agent "skills," Beeclaw implements a Reference Monitor strategy. The "Bee" firmware treats the "Claw" agent as an untrusted operator, enforcing a Hard Geofence and Kinematic Envelope. Any command violating these constraints triggers a failsafe hover mode.</p>
-
-        <h3>8. Future Outlook</h3>
-        <p>The roadmap includes Swarm Agency, utilizing the Zenoh pub/sub protocol to allow multiple Beeclaw units to share a distributed context for cooperative mapping. Beeclaw is a platform for the secure, autonomous interaction of software with the physical world.</p>
-
-        <h3>9. Technical Addendum: Detailed Specifications</h3>
-        <ul>
-            <li><b>Flight MCU:</b> STM32H743ZI (480MHz, 2MB Flash, 1MB RAM).</li>
-            <li><b>Inner Loop:</b> 1 kHz rate control running on the "Bee".</li>
-            <li><b>Agent Loop:</b> 1-5 Hz reasoning loop running on the "Claw".</li>
-            <li><b>Comms:</b> Interconnect via 1000Base-T Ethernet and High-speed SPI.</li>
-        </ul>
-
-        <br>
-        <hr>
-        <p align="left">
-            <font size="2">
-                <a href="https://blog.saimadugula.com">← Back to Blog</a>
-            </font>
-        </p>
-    </div>
+    </center>
 </body>
 </html>
